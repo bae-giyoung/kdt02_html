@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* 전체 선택자 */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* 조상 자손 선택자 */
+header ul {
+  background-color: green;
+  color : white ;
+}
+
+/* 부모 자식 선택자 */
+footer > ul {
+  background-color: black;
+  color: white;
+}
+
+/* 속성선택자 */
+h2[class] {
+  color : yellow;
+
+  /* flex 박스 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 클래스선택자 */
+.g1 {
+  /* 배경색과 글자색 */
+  background-color: blue;
+  color : white;
+
+  /* 가로와 세로 */
+  width: 50%;
+  height: 80px;
+
+  /* 안쪽여백 */
+  padding: 20px;
+  /* 바깥여백 */
+  /* margin : 20px; */
+}
+
+/* strong {
+    background-color: brown;
+    color: white;
+    padding: 20px;
+    width:50%;
+    height:20px;
+    display:block;
+} */
+
+.g2 {
+  background-color: red;
+  color : white;
+}
+
+/* 아이디 선택자 */
+#html {
+  background-color: blueviolet;
+  color : white;
+}
+
+/* 그룹 */
+#s1 , #s2 {
+  background-color: gainsboro;
+}
+
+article > p {
+    /* 구글 폰트 */
+    font-family: "Black Han Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 22px;
+}
+
+/* 구글 아이콘 */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+#s1 {
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* 플렉스 박스 */
+.fbox {
+    display: flex;
+    margin: 20px 0;
+}
+
+.fbox > div {
+    display:inline-block;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.fbox > p {
+    margin-left:30px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+ul > li {
+    margin-left: 20px;
+}
