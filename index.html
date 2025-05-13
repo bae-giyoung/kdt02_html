@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Digital 2기 HTML</title>
+    <!-- asome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <h1>HTML 실습</h1>
-    <ol>
-        <li><a href="/01/01.html" target="_self">01. HTML 구조</a></li>
-        <li><a href="/02/02.html" target="_self">02. CSS</a></li>
-    </ol>
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-window-maximize"></i>K-Digital Training 2-2
+        </div>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>HTML 실습</h2>
+            <ol class="class-list">
+                <li><a href="/01/01.html" target="_self"><span class="tit">HTML 구조</span><i class="fa-solid fa-link"></i></a></li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>CSS 실습</h2>
+            <ol class="class-list">
+                <li><a href="/02/02.html" target="_self"><span class="tit">CSS</span><i class="fa-solid fa-link"></i></a></li>
+            </ol>
+        </section>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="https://www.inflearn.com/course/%EB%88%84%EA%B5%AC%EB%82%98-%EC%89%BD%EA%B2%8C-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EC%9B%B9%EA%B0%9C%EB%B0%9C-%EA%B8%B0%EC%B4%88" target="_blank" rel="no-referrer no-openner" title="새창열림">HTML 인프런참고</a></li>
+            <li><a href="https://www.w3schools.com/" target="_blank" rel="no-referrer no-openner" title="새창열림">W3School</a></li>
+            <li><a href="https://developer.mozilla.org/ko/" target="_blank" rel="no-referrer no-openner" title="새창열림">MDN</a></li>
+        </ul>
+    </footer>
     <!-- 
     [상대경로] 
     ./
