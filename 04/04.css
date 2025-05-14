@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.fInput, .fButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 80%;
+    height: 60px;
+}
+
+.fInput > input {
+    width: calc((100% - 30px)/2);
+    height: 40px;
+    border: 2px solid #0B1F50;
+    border-radius: 8px;
+    padding: 0 8px;
+    box-sizing:border-box;
+}
+
+.fButton > button {
+    width: 30%;
+    height: 40px;
+}

@@ -1,0 +1,29 @@
+/* 공통 스타일 */
+main {
+    display: flex;
+    min-height: 60vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-color: #0B1F50;
+}
+
+button {
+    border: none;
+    background-color: blue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color:#fff;
+    font-weight: 900;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+button:hover {
+    background-color: brown;
+}
+
+/* 개별 스타일 */
+.greeting-btn {
+    font-size: 22px;
+}

@@ -124,5 +124,11 @@ footer ul li:nth-child(2) {
 
 footer ul li:nth-child(3) {
   color:#ffffff77;
-  /* font-size: 15px; */
+}
+
+@media screen and (max-width:1024px) {
+  body {
+    width: 100%;
+    margin-left:0;
+  }
 }
