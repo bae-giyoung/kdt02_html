@@ -13,6 +13,9 @@ ul {
     list-style: none;
 }
 
+.ssgap {
+    height: 30px;
+}
 
 header, main, footer {
     width: 80%;
