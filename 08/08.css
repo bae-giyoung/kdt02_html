@@ -1,0 +1,36 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    border: 1px dotted #000;
+    box-sizing: border-box;
+}
+
+.mdiv {
+    width: 50%;
+}
+
+select {
+    width: 90%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 70%;
+    height: 40px;
+}
+
+[readonly] {
+    background-color: antiquewhite;
+}
+
+label {
+    font-size: 20px;
+}
+
+/* [for="txt1"] {
+    background-color: blue;
+} */

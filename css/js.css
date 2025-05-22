@@ -23,6 +23,13 @@ button:hover {
     background-color: brown;
 }
 
+.slogo {
+    display: block;
+    color: #485269;
+    font-size: 34px;
+    padding-left: 85px;
+}
+
 /* 개별 스타일 */
 .bt04 {
     font-size: 22px;
