@@ -1,0 +1,57 @@
+.gridDiv {
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px;
+    box-sizing: border-box;
+}
+
+.gridDiv>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:150px;
+    height:150px;
+    margin: 5px;
+    border: 1px solid #000;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+.gridDiv>div {
+    background-image: none;
+}
+
+.gridDiv>div.heart.show {
+    background-image: url(../img/hart.png);
+}
+
+.gridDiv>div.boom.show {
+    background-image: url(../img/boom.png);
+}
+
+/* .gridDiv img {
+    display: block;
+    max-width: 100%;
+    opacity: 0;
+} */
+
+/* .show img {
+    opacity: 1;
+} */
+
+.btnDiv {
+    margin: 30px auto;
+}
+
+#msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    height: 100px;
+    border: 1px solid #000;
+    font-size: 28px;
+    font-weight: 700;
+}
