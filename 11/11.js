@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
+    const hDiv = document.querySelector('.hDiv');
+    const gDiv = document.querySelector('.gridDiv');
     const grids = document.querySelectorAll('.gridDiv>div');
     const bt = document.querySelector('.btnDiv>button');
     const msg = document.querySelector('#msg');
@@ -8,11 +10,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // 1. 시작 버튼 누르면 랜덤한 위치에 폭탄 이미지 생성 + 이미지 교체 + 클래스 붙이기
     // grids[Math.floor(Math.random()*9)].innerHTML = '<img src="../img/boom.png" alt="폭탄">';
     bt.addEventListener('click',()=>{
+        hDiv.classList.remove('fail');
+        hDiv.style.display = 'none';
+        gDiv.style.display = 'flex';
+
         // 게임 초기화
         if (!flag) {
             flag = true;
             msg.innerHTML = '게임중';
-            bt.innerHTML = '게임 시작하기';
+            bt.innerHTML = '폭탄섞기';
             
             grids.forEach((g)=>{
                 g.className = 'heart';
@@ -38,13 +44,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
             // 게임 중
             if (grid.classList.contains('boom')) {
                 msg.innerHTML = '실패';
-                grids.forEach((g)=>g.classList.add('show'));
+                //grids.forEach((g)=>g.classList.add('show'));
+                hDiv.classList.add('fail');
+                hDiv.style.display = 'flex';
+                gDiv.style.display = 'none';
             } else if (count>=7) {
                 msg.innerHTML = '성공';
-                grids.forEach((g)=>{
+                /* grids.forEach((g)=>{
                     g.classList.remove('boom');
                     g.classList.add('show');
-                });
+                }); */
+                hDiv.style.display = 'flex';
+                gDiv.style.display = 'none';
             } else {
                 grid.classList.add('show');
                 count++;
