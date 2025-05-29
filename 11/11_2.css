@@ -44,6 +44,14 @@
 }
 
 .mvlist li .inten {
-    color: #000;
+    color: black;
     font-size: 12px;
+}
+
+.mvlist li .up {
+    color:red;
+}
+
+.mvlist li .down {
+    color: blue;
 }
