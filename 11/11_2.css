@@ -1,0 +1,49 @@
+.selectBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100px;
+    background-color: aliceblue;
+    margin-bottom: 10px;
+}
+
+.selectBox input {
+    width: 150px;
+    height: 30px;
+}
+
+.resultBox {
+    width: 80%;
+}
+
+.mvTit {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.mvlist {
+    width: 100%;
+    min-height: 285px;
+}
+
+.mvlist li .spRank {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 18px;
+    height: 18px;
+    background-color: #E5E6F2;
+    border-radius: 3px;
+    color: #000;
+    font-size: 12px;
+}
+
+.mvlist li .inten {
+    color: #000;
+    font-size: 12px;
+}
