@@ -1,4 +1,5 @@
 // ================== [fetch 사용 연습] ===================
+let isClicked = false;
 
 // 포스터 보여주는 함수
 const showPoster = (movieNm) => {
@@ -8,15 +9,19 @@ const showPoster = (movieNm) => {
   .then(data => {
     //console.log(data);
     document.querySelector('.poster .imgBox').innerHTML = `<img src="https://image.tmdb.org/t/p/w500${data.results[0].poster_path}"></img>`;
-    document.querySelector('.poster .opd').innerHTML = `개봉일: ${data.results[0].release_date}`;
   })
   .catch(err => console.log(err));
 }
 
 // 자세한 영화 정보 보여주는 함수
-//const showInfo = (movieNm) => {
-//  showPoster(movieNm);
-//}
+const showInfo = (movieNm, openDt) => {
+  showPoster(movieNm);
+  isClicked = true;
+  if(isClicked) {
+    //alert('클릭함');
+    document.querySelector('.info').innerHTML = `개봉일: ${openDt}`;
+  }
+}
 
 // 순위 리스트 출력 함수
 const printList = (data, day) => {
@@ -31,7 +36,7 @@ const printList = (data, day) => {
     else intenIco = `<small class="same">=</small>`;
     const movieNm = encodeURIComponent(item.movieNm);
 
-    return `<li onclick="showPoster('${movieNm}');">
+    return `<li onclick="showInfo('${movieNm}','${item.openDt}');">
     <span class="spRank">${item.rank}</span>
     <span class="spNm">${item.movieNm}</span>
     <span class="inten">${intenIco}</span>
@@ -84,6 +89,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const posterDiv = document.querySelector('.poster .imgBox');
   btn.addEventListener('click',(e)=>{
     e.preventDefault();
+    isClicked = false;
     posterDiv.innerHTML = '';
     const day = seld.value.replaceAll('-','');
     const gubun = document.querySelector('[name=gubun]:checked').value;
