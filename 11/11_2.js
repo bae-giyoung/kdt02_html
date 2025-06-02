@@ -15,17 +15,19 @@ const showPoster = (movieNm) => {
 // 자세한 영화 정보 보여주는 함수
 const bindHandler = (dataList) => {
   const lis = document.querySelectorAll('.mvlist li');
+  const infoBox = document.querySelector('.resultBox2');
   lis.forEach((li, idx)=>{
     li.addEventListener('click', ()=>{
       const data = dataList[idx];
+      infoBox.classList.remove('hide');
       showPoster(encodeURIComponent(data.movieNm));
       document.querySelector('.info .openDt').innerHTML = `개봉일: ${data.openDt}`;
       document.querySelector('.info .salesAmt').innerHTML = `일 매출액: ${data.salesAmt}`;
       document.querySelector('.info .salesAcc').innerHTML = `누적 매출액: ${data.salesAcc}`;
       document.querySelector('.info .audiCnt').innerHTML = `일 관객수: ${data.audiCnt}`;
       document.querySelector('.info .audiAcc').innerHTML = `누적 관객수: ${data.audiAcc}`;
-    })
-  })
+    });
+  });
 }
 
 // 순위 리스트 출력 함수
@@ -48,8 +50,13 @@ const printList = (data, day) => {
   });
   ul.innerHTML = nmlist.join("");
   
-  if (data.length == 0) ul.innerHTML = `<li class="no-data">데이터가 존재하지 않습니다.</li>`;
-  
+  // 데이터가 없는 경우의 리스트, 데이터가 존재할 경우 첫번째 목록의 포스터 출력
+  if (data.length == 0) {
+    ul.innerHTML = `<li class="no-data">데이터가 존재하지 않습니다.</li>`;
+  } else {
+    showPoster(encodeURIComponent(data[0].movieNm) + "");
+  }
+
   // 타이틀 갱신
   document.querySelector('.mvTit .date').innerHTML = day;
 }
@@ -62,9 +69,8 @@ const getAllData = (day, gubun)=>{
   fetch(url)
   .then(resp => resp.json())
   .then(data => {
-    console.log(data.boxOfficeResult);
+    //console.log(data.boxOfficeResult);
     printList(data.boxOfficeResult.dailyBoxOfficeList, day);
-    showPoster(encodeURIComponent(data.boxOfficeResult.dailyBoxOfficeList[0].movieNm) + "");
     bindHandler(data.boxOfficeResult.dailyBoxOfficeList);
   })
   .catch(err => console.log(err));
@@ -94,9 +100,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const btn = document.getElementById('search');
   const seld = document.getElementById('seld');
   const posterDiv = document.querySelector('.poster .imgBox');
+  const infoBox = document.querySelector('.resultBox2');
+
   btn.addEventListener('click',(e)=>{
     e.preventDefault();
     posterDiv.innerHTML = '';
+    infoBox.classList.add('hide'); // 안보이게 처리하면 리셋 할 필요가 있을까?
     const day = seld.value.replaceAll('-','');
     const gubun = document.querySelector('[name=gubun]:checked').value;
     getAllData(day, gubun);

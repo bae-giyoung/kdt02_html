@@ -37,6 +37,7 @@
     display: flex;
     justify-content: space-between;
     width: 80%;
+    min-height: 410px;
 }
 
 .poster {
@@ -107,9 +108,13 @@
     width: 80%;
     padding: 30px;
     margin-top: 30px;
-    background-color: #dedede;
+    background-color: #f3f3f3;
     border-radius: 20px;
     box-sizing: border-box;
+}
+
+.resultBox2.hide {
+    display: none;
 }
 
 .resultBox2 .info > span {
