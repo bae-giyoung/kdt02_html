@@ -1,5 +1,4 @@
 // ================== [fetch 사용 연습] ===================
-let isClicked = false;
 
 // 포스터 보여주는 함수
 const showPoster = (movieNm) => {
@@ -14,13 +13,19 @@ const showPoster = (movieNm) => {
 }
 
 // 자세한 영화 정보 보여주는 함수
-const showInfo = (movieNm, openDt) => {
-  showPoster(movieNm);
-  isClicked = true;
-  if(isClicked) {
-    //alert('클릭함');
-    document.querySelector('.info').innerHTML = `개봉일: ${openDt}`;
-  }
+const bindHandler = (dataList) => {
+  const lis = document.querySelectorAll('.mvlist li');
+  lis.forEach((li, idx)=>{
+    li.addEventListener('click', ()=>{
+      const data = dataList[idx];
+      showPoster(encodeURIComponent(data.movieNm));
+      document.querySelector('.info .openDt').innerHTML = `개봉일: ${data.openDt}`;
+      document.querySelector('.info .salesAmt').innerHTML = `일 매출액: ${data.salesAmt}`;
+      document.querySelector('.info .salesAcc').innerHTML = `누적 매출액: ${data.salesAcc}`;
+      document.querySelector('.info .audiCnt').innerHTML = `일 관객수: ${data.audiCnt}`;
+      document.querySelector('.info .audiAcc').innerHTML = `누적 관객수: ${data.audiAcc}`;
+    })
+  })
 }
 
 // 순위 리스트 출력 함수
@@ -34,9 +39,8 @@ const printList = (data, day) => {
     if (inten > 0) intenIco = `<small class="up">↑${Math.abs(inten)}</small>`;
     else if (inten < 0) intenIco = `<small class="down">↓${Math.abs(inten)}</small>`;
     else intenIco = `<small class="same">=</small>`;
-    const movieNm = encodeURIComponent(item.movieNm);
 
-    return `<li onclick="showInfo('${movieNm}','${item.openDt}');">
+    return `<li>
     <span class="spRank">${item.rank}</span>
     <span class="spNm">${item.movieNm}</span>
     <span class="inten">${intenIco}</span>
@@ -50,7 +54,7 @@ const printList = (data, day) => {
   document.querySelector('.mvTit .date').innerHTML = day;
 }
 
-const printDataAll = (day, gubun)=>{
+const getAllData = (day, gubun)=>{
   gubun = gubun || "";
   // fetch API 사용해서 어제 날짜의 박스오피스 순위 정보 받기
   const apiKey = 'ea8f1c3fc3b960969ad4467d5f3e617f';
@@ -61,6 +65,7 @@ const printDataAll = (day, gubun)=>{
     console.log(data.boxOfficeResult);
     printList(data.boxOfficeResult.dailyBoxOfficeList, day);
     showPoster(encodeURIComponent(data.boxOfficeResult.dailyBoxOfficeList[0].movieNm) + "");
+    bindHandler(data.boxOfficeResult.dailyBoxOfficeList);
   })
   .catch(err => console.log(err));
 }
@@ -73,29 +78,29 @@ const yesterday = ()=>{
 
 const init = (yesterday)=>{
   // 데이터 뿌리기
-  printDataAll(yesterday);
+  getAllData(yesterday);
 
   // 날짜 선택 박스 디폴트값 어제 날짜로 지정!
   const seld = document.getElementById('seld');
   seld.value = yesterday.slice(0,4) + "-" + yesterday.slice(4,6) + "-" + yesterday.slice(6,8);
 }
 
+
+
 document.addEventListener('DOMContentLoaded', ()=>{
   init(yesterday());
 
-  // 날짜 입력받으면, 데이터 갱신
+  // 일자와 영화 유형으로 박스오피스 순위 검색하기
   const btn = document.getElementById('search');
   const seld = document.getElementById('seld');
   const posterDiv = document.querySelector('.poster .imgBox');
   btn.addEventListener('click',(e)=>{
     e.preventDefault();
-    isClicked = false;
     posterDiv.innerHTML = '';
     const day = seld.value.replaceAll('-','');
     const gubun = document.querySelector('[name=gubun]:checked').value;
-    printDataAll(day, gubun);
+    getAllData(day, gubun);
   });
-  //seld.addEventListener('change', () => printDataAll(seld.value.replaceAll('-','')));
 })
 
 
