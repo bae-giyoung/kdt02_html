@@ -28,13 +28,33 @@
     <main>
         <div class="selectBox">
             <input type="date" id="seld" name="seld">
+            <div>
+                <input type="radio" name="gubun" id="gubun1" value="" checked>
+                <label for="gubun1">전체</label>
+                <input type="radio" name="gubun" id="gubun2" value="Y">
+                <label for="gubun2">다양성</label>
+                <input type="radio" name="gubun" id="gubun3" value="N">
+                <label for="gubun3">상업</label>
+            </div>
+            <button type="button" id="search">검색</button>
         </div>
         <div class="resultBox">
-            <h2 class="mvTit">
-                <span class="date"></span>
-                박스오피스 순위
-            </h2>
-            <ul class="mvlist class-list"></ul>
+            <div class="poster">
+                <div class="imgBox"></div>
+                <span class="opd"></span>
+            </div>
+            <div class="content">
+                <h2 class="mvTit">
+                    <span class="date"></span>
+                    박스오피스 순위
+                </h2>
+                <ul class="mvlist class-list"></ul>
+            </div>
+        </div>
+        <div class="resultBox2">
+            <p class="info">
+
+            </p>
         </div>
     </main>
 
