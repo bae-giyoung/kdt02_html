@@ -11,38 +11,28 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/main.css" type="text/css">
     <link rel="stylesheet" href="../css/js.css" type="text/css">
-    <link rel="stylesheet" href="./11.css" type="text/css">
+    <link rel="stylesheet" href="./12.css" type="text/css">
 
     <!-- 스크립트 -->
-    <script src="./11.js" type="text/javascript"></script>
+    <script src="./12.js" type="text/javascript"></script>
 </head>
 <body>
     <header>
         <div class="logo">
             <i class="fa-solid fa-window-maximize"></i>
             KDT 2기 자바스크립트 연습
-            <span class="slogo"><i class="fa-solid fa-paperclip"></i>주사위 게임</span>
+            <span class="slogo"><i class="fa-solid fa-paperclip"></i>사진 검색</span>
         </div>
     </header>
 
     <main>
-        <div class="gridDiv">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="hDiv"></div>
-        <div class="btnDiv">
-            <button id="btn" class="btn04">게임 시작하기</button>
-        </div>
-        <div id="msg">
-
+        <form id="searchBox">
+            <input id="schTxt" type="text" placeholder="검색어를 입력하세요." />
+            <button type="button" id="schBt">검색</button>
+            <button type="reset" id="resetBt">리셋</button>
+        </form>
+        <div id="resultBox">
+            검색 결과가 없습니다.
         </div>
     </main>
 

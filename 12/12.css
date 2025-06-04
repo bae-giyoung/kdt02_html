@@ -1,62 +1,92 @@
-.gridDiv {
+@charset "UTF-8";
+
+main {
+    justify-content: flex-start;
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
+}
+
+#searchBox {
     display: flex;
-    flex-wrap: wrap;
-    width: 480px;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    background-color: aliceblue;
+    border-radius: 15px;
+    margin-bottom: 30px;
     box-sizing: border-box;
 }
 
-.gridDiv>div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width:150px;
-    height:150px;
-    margin: 5px;
-    border: 1px solid #000;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+#searchBox input {
+    width: calc(70% - 240px);
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 0 5px;
     box-sizing: border-box;
 }
 
-.gridDiv>div {
-    background-image: none;
+#searchBox button {
+    width: 100px;
+    height: 40px;
 }
 
-.gridDiv>div.heart.show {
-    background-image: url(../img/hart.png);
-}
-
-.gridDiv>div.boom.show,
-.gridDiv>div.heart.boom.show {
-    background-image: url(../img/boom.png);
-}
-
-.hDiv {
-    display: none;
-    background: url(../img/hart.png) center no-repeat;
-    background-size: 90% auto;
-    width: 470px;
-    height: 470px;
-    margin: 5px;
-    border: 1px solid #000;
-}
-
-.hDiv.fail {
-    background-image: url(../img/boom.png);
-}
-
-.btnDiv {
-    margin: 30px auto;
-}
-
-#msg {
+#resultBox {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 450px;
-    height: 100px;
-    border: 1px solid #000;
-    font-size: 28px;
-    font-weight: 700;
+    flex-flow: wrap;
+    gap: 30px;
+    width: 100%;
+}
+
+#resultBox .itemBox {
+    position: relative;
+    width: calc((100% - 60px)/3);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00000022;
+    overflow: hidden;
+}
+
+#resultBox .imgBox {
+    position: relative;
+    width: 100%;
+    background-color: #f3f3f3;
+    overflow: hidden;
+}
+
+#resultBox .imgBox::before {
+    content:"";
+    display: inline-block;
+    width: 100%;
+    padding-top: 63%;
+}
+
+#resultBox .imgBox img {
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#resultBox .info {
+    position: relative;
+    padding: 15px 15px 25px;
+}
+
+#resultBox .info > span {
+    display: block;
+}
+
+#resultBox .info .tit {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+#resultBox .info .loca {
+    font-size: 14px;
+    color: #555;
 }
