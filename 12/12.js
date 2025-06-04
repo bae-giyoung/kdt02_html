@@ -44,7 +44,6 @@ const searchImgs = (txt)=>{
 }
 
 
-
 document.addEventListener('DOMContentLoaded',()=>{
   const schInp = document.getElementById('schTxt');
   const schBt = document.getElementById('schBt');
@@ -55,5 +54,5 @@ document.addEventListener('DOMContentLoaded',()=>{
     searchImgs(schInp.value);
   });
 
-  resBt.addEventListener('click',()=> resBox.innerHTML = '검색 결과가 없습니다.');
+  resBt.addEventListener('click',()=> resBox.innerHTML = '<div class="noData">검색 결과가 없습니다.</div>');
 })
