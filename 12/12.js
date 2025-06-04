@@ -6,7 +6,7 @@
 
 // 받은 데이터로 이미지 요소 만들기
 const makeLists = (data)=>{
-  const resultBox = document.getElementById('resultBox');
+  //const resultBox = document.getElementById('resultBox'); // 상위 컨텍스트에 반드시 resultBox가 있다고 가정하면 없애는 것이 좋을까? => 교수님 풀이를 보니 인수로 받는 것이 좋겠다!
   let resultLists = data.map((item)=>{
     return `
     <div class="itemBox">
@@ -44,15 +44,75 @@ const searchImgs = (txt)=>{
 }
 
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', ()=>{
   const schInp = document.getElementById('schTxt');
   const schBt = document.getElementById('schBt');
   const resBt = document.getElementById('resetBt');
-  const resBox = document.getElementById('resultBox');
+  const resultBox = document.getElementById('resultBox');
 
-  schBt.addEventListener('click',()=>{
-    searchImgs(schInp.value);
+  schBt.addEventListener('click',()=> searchImgs(schInp.value));
+
+  resBt.addEventListener('click',()=> resultBox.innerHTML = '<div class="noData">검색 결과가 없습니다.</div>');
+})
+
+
+// [교수님 풀이] + 공부
+const getData = (txtKw, content)=>{
+  const apikey = 'qnUaHBbRpxj8Q30t70gU7vn2g%2BOwovLtXQ54vycc6E6jsnE6T8zHH%2FxehRq%2BwX7QFHOiTlmtq2R%2BKbgknVycTw%3D%3D';
+  const baseUrl = 'https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1';
+  let url = `${baseUrl}?serviceKey=${apikey}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A`;
+  url =`${url}&keyword=${txtKw.value}&_type=json`; // 쿼리의 키밸류 쌍의 순서는 바꿔줘도 된다!
+  
+  //console.log(url);
+
+  // fetch API
+  fetch(url)
+  //.then(resp => { console.log(resp); return resp.json() }) // .json()하기 전 데이터도 확인해보자!
+  .then(resp => resp.json())
+  .then(data => {
+    //console.log(data); // 위의 데이터와 비교해보자!
+    const items = data.response.body.items.item;
+    //console.log(items);
+    let tags = items.map(item =>
+      `
+      <div class="card">
+        <div class="cardImg">
+            <img src="${item.galWebImageUrl}" />
+        </div>
+        <div class="cardDiv">
+            <span class="sp1">${item.galTitle}</span>
+            <span class="sp2">${item.galPhotographyLocation}</span></span>
+        </div>
+      </div>
+      `
+    );
+    content.innerHTML = tags.join('');
+  })
+  .catch(err => console.log(err))
+
+  console.log('fetch.....');
+
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const txtKw = document.querySelector('#txt1');
+  const bt1 = document.querySelector('.formDiv > button');
+  const bt2 = document.querySelector('.formDiv > button[type=reset]');
+  const content = document.querySelector('.content');
+
+  bt1.addEventListener('click', (e)=>{
+    e.preventDefault();
+
+    if(txtKw.value == '') { // value는 null이나 undefined가 아니라 
+      alert('키워드를 입력하세요');
+      txtKw.focus();
+      return;
+    }
+
+    getData(txtKw, content);
   });
 
-  resBt.addEventListener('click',()=> resBox.innerHTML = '<div class="noData">검색 결과가 없습니다.</div>');
+  bt2.addEventListener('click', ()=>{
+    content.innerHTML = '';
+  });
 })

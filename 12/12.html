@@ -21,18 +21,38 @@
         <div class="logo">
             <i class="fa-solid fa-window-maximize"></i>
             KDT 2기 자바스크립트 연습
-            <span class="slogo"><i class="fa-solid fa-paperclip"></i>사진 검색</span>
+            <span class="slogo"><i class="fa-solid fa-paperclip"></i>관광공사 사진 검색</span>
         </div>
     </header>
 
-    <main>
+    <main id="pMain1">
         <form id="searchBox">
-            <input id="schTxt" type="text" placeholder="검색어를 입력하세요." />
+            <input id="schTxt" name="schTxt" type="text" placeholder="검색어를 입력하세요." />
             <button type="button" id="schBt">검색</button>
             <button type="reset" id="resetBt">리셋</button>
         </form>
         <div id="resultBox">
             <div class="noData">검색 결과가 없습니다.</div>
+        </div>
+    </main>
+    
+    <!-- 교수님 풀이 백업 -->
+    <main id="pMain2">
+        <form class="formDiv">
+            <input id="txt1" name="txt1" type="text" placeholder="검색어를 입력하세요." />
+            <button type="button">검색</button>
+            <button type="reset">리셋</button>
+        </form>
+        <div class="content">
+            <!-- <div class="card">
+                <div class="cardImg">
+                    <img src="http://tong.visitkorea.or.kr/cms2/website/72/3097272.jpg" alt="">
+                </div>
+                <div class="cardDiv">
+                    <span class="sp1">부산역</span>
+                    <span class="sp2">주소</span>
+                </div>
+            </div> -->
         </div>
     </main>
 
