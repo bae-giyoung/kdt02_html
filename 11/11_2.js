@@ -2,7 +2,8 @@
 
 // 포스터 보여주는 함수
 const showPoster = (movieNm) => {
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=&query=${movieNm}`; // 인증키 삭제함
+  const apikey = '';
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${movieNm}`; // 인증키 삭제함
   fetch(url)
   .then(resp => resp.json())
   .then(data => {

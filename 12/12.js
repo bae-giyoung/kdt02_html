@@ -32,9 +32,10 @@ const searchImgs = (txt)=>{
     return;
   }
 
+  const apikey = '';
   // const encodedTxt = encodeURIComponent(txt);
   const encodedTxt = txt;
-  const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${encodedTxt}&_type=json`;
+  const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=${apikey}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${encodedTxt}&_type=json`;
   fetch(url)
   .then(resp => resp.json())
   .then(data => {
