@@ -2,7 +2,7 @@
 
 // 포스터 보여주는 함수
 const showPoster = (movieNm) => {
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=b42483d9af611184a5e87b9980e11075&query=${movieNm}`;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=&query=${movieNm}`; // 인증키 삭제함
   fetch(url)
   .then(resp => resp.json())
   .then(data => {
@@ -64,7 +64,7 @@ const printList = (data, day) => {
 const getAllData = (day, gubun)=>{
   gubun = gubun || "";
   // fetch API 사용해서 어제 날짜의 박스오피스 순위 정보 받기
-  const apiKey = 'ea8f1c3fc3b960969ad4467d5f3e617f';
+  const apiKey = '';
   const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${apiKey}&targetDt=${day}&multiMovieYn=${gubun}`;
   fetch(url)
   .then(resp => resp.json())
@@ -136,7 +136,7 @@ const yesterday = () => {
 
 const getMvList = (dt, ul) => {
   console.log("dt=", dt) 
-  const url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=2a350cfbca6c428eb04c71e21cc681e7&targetDt=" + dt;
+  const url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=&targetDt=" + dt;
   
   // console.log(url)
   fetch(url) 

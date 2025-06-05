@@ -34,7 +34,7 @@ const searchImgs = (txt)=>{
 
   // const encodedTxt = encodeURIComponent(txt);
   const encodedTxt = txt;
-  const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=qnUaHBbRpxj8Q30t70gU7vn2g%2BOwovLtXQ54vycc6E6jsnE6T8zHH%2FxehRq%2BwX7QFHOiTlmtq2R%2BKbgknVycTw%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${encodedTxt}&_type=json`;
+  const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${encodedTxt}&_type=json`;
   fetch(url)
   .then(resp => resp.json())
   .then(data => {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // [교수님 풀이] + 공부
 const getData = (txtKw, content)=>{
-  const apikey = 'qnUaHBbRpxj8Q30t70gU7vn2g%2BOwovLtXQ54vycc6E6jsnE6T8zHH%2FxehRq%2BwX7QFHOiTlmtq2R%2BKbgknVycTw%3D%3D';
+  const apikey = '';
   const baseUrl = 'https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1';
   let url = `${baseUrl}?serviceKey=${apikey}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A`;
   url =`${url}&keyword=${txtKw.value}&_type=json`; // 쿼리의 키밸류 쌍의 순서는 바꿔줘도 된다!
